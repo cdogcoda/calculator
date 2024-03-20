@@ -1,1 +1,3 @@
 # calculator
+
+Hello everyone! This is going to be my last project of the TOP Foundations Course and today, I am building a basic implementation of a calculator! The calculator will feature a UI and be able to make basic calculations (hopefully more advanced features coming soon after!). After the project is finished, I should have been able to demonstrate a basic proficiency in the following skills: everything JS related up until the Etch-a-Sketch project, use of JS objects, and use of advanced array methods such as map, filter, and reduce. With that said, I hope everyone viewing this repo enjoys and thank you for stopping by!
