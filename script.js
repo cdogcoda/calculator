@@ -55,3 +55,8 @@ equalButton.addEventListener("click", () => {
     answerBox.textContent = result;
     isNewCalculation = true;
 })
+
+const clearButton = document.querySelector(".maintenance-container :first-child");
+clearButton.addEventListener("click", () => {
+    answerBox.textContent = "";
+})
