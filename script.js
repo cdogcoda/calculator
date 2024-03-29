@@ -42,8 +42,16 @@ primaryButtons.forEach((button) => {
 
 const equalButton = document.querySelector(".maintenance-container :last-child");
 equalButton.addEventListener("click", () => {
-    let equationList = answerBox.textContent.split("");
-    let result = operate(equationList[1], +equationList[0], +equationList[2]);
+    let equation = answerBox.textContent;
+    let operator;
+    let operands;
+    for (const operation in operationsObject) {
+        if (equation.includes(operation)) {
+            operator = operation;
+            operands = equation.split(operator);
+        }
+    }
+    let result = operate(operator, +operands[0], +operands[1]);
     answerBox.textContent = result;
     isNewCalculation = true;
 })
