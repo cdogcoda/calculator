@@ -25,4 +25,25 @@ function operate(operator, firstNum, secondNum) {
     }
 }
 
+let isNewCalculation = false;
 
+const answerBox = document.querySelector(".answer-box");
+answerBox.style.cssText = "font-size: 100px; text-align: right;"
+const primaryButtons = document.querySelectorAll(".primary-container button");
+primaryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if (isNewCalculation) {
+            isNewCalculation = false;
+            answerBox.textContent = "";
+        }
+        answerBox.textContent += button.textContent; 
+    })
+})
+
+const equalButton = document.querySelector(".maintenance-container :last-child");
+equalButton.addEventListener("click", () => {
+    let equationList = answerBox.textContent.split("");
+    let result = operate(equationList[1], +equationList[0], +equationList[2]);
+    answerBox.textContent = result;
+    isNewCalculation = true;
+})
