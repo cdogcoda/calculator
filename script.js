@@ -15,3 +15,14 @@ let operationsObject = {
     "*": (firstNum, secondNum) => firstNum * secondNum,
     "/": (firstNum, secondNum) => firstNum / secondNum,
 }
+
+
+function operate(operator, firstNum, secondNum) {
+    for (const operation in operationsObject) {
+        if (operator == operation) {
+            return operationsObject[operation](firstNum, secondNum);
+        }
+    }
+}
+
+
