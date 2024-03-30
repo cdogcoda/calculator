@@ -48,8 +48,8 @@ operationButtons.forEach((button) => {
     })
 })
 
-const equalButton = document.querySelector(".maintenance-container :last-child");
-equalButton.addEventListener("click", () => {
+const equalsButton = document.querySelector(".maintenance-container #equals");
+equalsButton.addEventListener("click", () => {
     let equation = answerBox.textContent;
     let operator;
     let operands;
@@ -64,7 +64,14 @@ equalButton.addEventListener("click", () => {
     isNewCalculation = true;
 })
 
-const clearButton = document.querySelector(".maintenance-container :first-child");
+const clearButton = document.querySelector(".maintenance-container #clear");
 clearButton.addEventListener("click", () => {
     answerBox.textContent = "";
+})
+
+const deleteButton = document.querySelector(".maintenance-container #delete");
+deleteButton.addEventListener("click", () => {
+    let answerBoxContentList = answerBox.textContent.split("");
+    answerBoxContentList.pop();
+    answerBox.textContent = answerBoxContentList.join("");
 })
