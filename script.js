@@ -20,7 +20,7 @@ let operationsObject = {
 function operate(operator, firstNum, secondNum) {
     for (const operation in operationsObject) {
         if (operator == operation) {
-            return operationsObject[operation](firstNum, secondNum);
+            return Math.round(operationsObject[operation](firstNum, secondNum) * 1000) / 1000;
         }
     }
 }
