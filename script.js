@@ -29,14 +29,22 @@ let isNewCalculation = false;
 
 const answerBox = document.querySelector(".answer-box");
 answerBox.style.cssText = "font-size: 100px; text-align: right;"
-const primaryButtons = document.querySelectorAll(".primary-container button");
-primaryButtons.forEach((button) => {
+const numberButtons = document.querySelectorAll(".numbers-container button");
+const operationButtons = document.querySelectorAll(".operations-container button");
+numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (isNewCalculation) {
             isNewCalculation = false;
             answerBox.textContent = "";
         }
-        answerBox.textContent += button.textContent; 
+        answerBox.textContent += button.textContent;
+    })
+})
+operationButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if (answerBox.textContent != "" && isNewCalculation == false) {
+            answerBox.textContent += button.textContent;
+        }
     })
 })
 
