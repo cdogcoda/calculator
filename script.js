@@ -25,6 +25,19 @@ function operate(operator, firstNum, secondNum) {
     }
 }
 
+function displayResult() {
+    result = operate(operator, +firstOperand, +secondOperand);
+    if (result) {
+        answerBox.textContent = result;
+    }
+    firstOperand = "";
+    operator = "";
+    secondOperand = "";
+    operationButtons.forEach((button) => {
+        button.style.cssText = "";
+    })
+}
+
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
@@ -54,22 +67,18 @@ operationButtons.forEach((button) => {
                 operator = button.textContent;
                 button.style.cssText = "background-color: red;";
             }
+        } else {
+            displayResult();
+            firstOperand = answerBox.textContent;
+            operator = button.textContent;
+            button.style.cssText = "background-color: red;";
         }
     })
 })
 
 const equalsButton = document.querySelector(".maintenance-container #equals");
 equalsButton.addEventListener("click", () => {
-    result = operate(operator, +firstOperand, +secondOperand);
-    if (result) {
-        answerBox.textContent = result;
-    }
-    firstOperand = "";
-    operator = "";
-    secondOperand = "";
-    operationButtons.forEach((button) => {
-        button.style.cssText = "";
-    })
+    displayResult();
 })
 
 const clearButton = document.querySelector(".maintenance-container #clear");
