@@ -70,16 +70,17 @@ body.addEventListener("keypress", (e) => {
     } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
         if (operator.length == 0) {
             firstOperand = answerBox.textContent;
-            let button = Array.from(operationButtons).find((button) => button.textContent == e.key);
             if (answerBox.textContent != "") {
+                let button = Array.from(operationButtons).find((btn) => btn.textContent == e.key);
                 operator = e.key;
-                button.style.cssText = "background-color: red;";
+                button.style.cssText = "background-color: rgba(8, 84, 114, .5);";
             }
         } else {
             displayResult();
+            let button = Array.from(operationButtons).find((btn) => btn.textContent == e.key);
             firstOperand = answerBox.textContent;
             operator = e.key;
-            button.style.cssText = "background-color: red;";
+            button.style.cssText = "background-color: rgba(8, 84, 114, .5);";
         }
     } else if (e.key == "C") {
         answerBox.textContent = "";
@@ -128,13 +129,13 @@ operationButtons.forEach((button) => {
             firstOperand = answerBox.textContent;
             if (answerBox.textContent != "") {
                 operator = button.textContent;
-                button.style.cssText = "background-color: red;";
+                button.style.cssText = "background-color: rgba(8, 84, 114, .5);";
             }
         } else {
             displayResult();
             firstOperand = answerBox.textContent;
             operator = button.textContent;
-            button.style.cssText = "background-color: red;";
+            button.style.cssText = "background-color: rgba(8, 84, 114, .5);";
         }
     })
 })
