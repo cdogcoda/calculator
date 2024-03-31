@@ -91,4 +91,14 @@ deleteButton.addEventListener("click", () => {
     let answerBoxContentList = answerBox.textContent.split("");
     answerBoxContentList.pop();
     answerBox.textContent = answerBoxContentList.join("");
+    if (operator && secondOperand == "") {
+       firstOperand = answerBox.textContent;
+        operator = "";
+        operationButtons.forEach((button) => {
+            button.style.cssText = "";
+        }) 
+    } else {
+        secondOperand = answerBox.textContent;
+    }
+    
 })
