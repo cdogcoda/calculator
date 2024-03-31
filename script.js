@@ -87,6 +87,9 @@ clearButton.addEventListener("click", () => {
     firstOperand = "";
     secondOperand = "";
     operator = "";
+    operationButtons.forEach((button) => {
+        button.style.cssText = "";
+    }) 
 })
 
 const deleteButton = document.querySelector(".maintenance-container #delete");
