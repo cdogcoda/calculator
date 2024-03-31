@@ -26,8 +26,11 @@ function operate(operator, firstNum, secondNum) {
 }
 
 function displayResult() {
+    if (!secondOperand) {
+        secondOperand = firstOperand;
+    }
     result = operate(operator, +firstOperand, +secondOperand);
-    if (result) {
+    if (result || result == 0) {
         answerBox.textContent = result;
     }
     firstOperand = "";
