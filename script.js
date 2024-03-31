@@ -25,7 +25,6 @@ function operate(operator, firstNum, secondNum) {
     }
 }
 
-let isNewCalculation = false;
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
@@ -36,10 +35,6 @@ const numberButtons = document.querySelectorAll(".numbers-container button");
 const operationButtons = document.querySelectorAll(".operations-container button");
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        if (isNewCalculation) {
-            isNewCalculation = false;
-            answerBox.textContent = "";
-        }
         if (!operator) {
             firstOperand += button.textContent;
             answerBox.textContent = firstOperand;
@@ -53,7 +48,8 @@ numberButtons.forEach((button) => {
 operationButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (operator.length == 0) {
-            if (answerBox.textContent != "" && isNewCalculation == false) {
+            firstOperand = answerBox.textContent;
+            if (answerBox.textContent != "") {
                 operator = button.textContent;
                 button.style.cssText = "background-color: red;";
             }
@@ -63,18 +59,14 @@ operationButtons.forEach((button) => {
 
 const equalsButton = document.querySelector(".maintenance-container #equals");
 equalsButton.addEventListener("click", () => {
-    let equation = answerBox.textContent;
-    let operator;
-    let operands;
-    for (const operation in operationsObject) {
-        if (equation.includes(operation)) {
-            operator = operation;
-            operands = equation.split(operator);
-        }
-    }
-    let result = operate(operator, +operands[0], +operands[1]);
+    let result = operate(operator, +firstOperand, +secondOperand);
     answerBox.textContent = result;
-    isNewCalculation = true;
+    firstOperand = "";
+    operator = "";
+    secondOperand = "";
+    operationButtons.forEach((button) => {
+        button.style.cssText = "";
+    })
 })
 
 const clearButton = document.querySelector(".maintenance-container #clear");
