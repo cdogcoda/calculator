@@ -149,6 +149,15 @@ numberButtons.forEach((button) => {
     }
 })
 
+numberButtons.forEach((button) => {
+    button.addEventListener("mousedown", () => {
+        button.style.cssText = "background-color: rgba(8, 84, 114, .5);";
+    })
+    button.addEventListener("mouseup", () => {
+        button.style.cssText = "background-color: rgba(8, 84, 114);";
+    })
+})
+
 operationButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (operator.length == 0) {
@@ -167,11 +176,21 @@ operationButtons.forEach((button) => {
 })
 
 const equalsButton = document.querySelector(".maintenance-container #equals");
+
 equalsButton.addEventListener("click", () => {
     displayResult();
 })
 
+equalsButton.addEventListener("mousedown", () => {
+    equalsButton.style.cssText = "background-color: rgba(8, 84, 114, .5);";
+})
+
+equalsButton.addEventListener("mouseup", () => {
+    equalsButton.style.cssText = "background-color: rgba(8, 84, 114);";
+})
+
 const clearButton = document.querySelector(".maintenance-container #clear");
+
 clearButton.addEventListener("click", () => {
     answerBox.textContent = "";
     firstOperand = "";
@@ -180,6 +199,14 @@ clearButton.addEventListener("click", () => {
     operationButtons.forEach((button) => {
         button.style.cssText = "";
     }) 
+})
+
+clearButton.addEventListener("mousedown", () => {
+    clearButton.style.cssText = "background-color: rgba(8, 84, 114, .5);";
+})
+
+clearButton.addEventListener("mouseup", () => {
+    clearButton.style.cssText = "background-color: rgba(8, 84, 114);";
 })
 
 const deleteButton = document.querySelector(".maintenance-container #delete");
@@ -198,4 +225,12 @@ deleteButton.addEventListener("click", () => {
     } else {
         secondOperand = answerBox.textContent;
     }
+})
+
+deleteButton.addEventListener("mousedown", () => {
+    deleteButton.style.cssText = "background-color: rgba(8, 84, 114, .5);";
+})
+
+deleteButton.addEventListener("mouseup", () => {
+    deleteButton.style.cssText = "background-color: rgba(8, 84, 114);";
 })
