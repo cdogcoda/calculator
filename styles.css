@@ -50,7 +50,7 @@ body {
     flex-flow: row wrap;
 }
 
-.numbers-container :last-child {
+.numbers-container #last-first, .numbers-container #last-second {
     flex: 1;
 }
 

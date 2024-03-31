@@ -33,6 +33,10 @@ function operate(operator, firstNum, secondNum) {
 function displayResult() {
     if (!secondOperand) {
         secondOperand = firstOperand;
+    } else if (firstOperand == ".") {
+        firstOperand = 0;
+    } else if (secondOperand == ".") {
+        secondOperand = 0;
     }
     result = operate(operator, +firstOperand, +secondOperand);
     if (result || result == 0) {
@@ -56,12 +60,21 @@ const answerBox = document.querySelector(".answer-box");
 answerBox.style.cssText = "font-size: 100px; text-align: right;"
 const numberButtons = document.querySelectorAll(".numbers-container button");
 const operationButtons = document.querySelectorAll(".operations-container button");
+const decimalButton = document.querySelector("#last-second");
 body.addEventListener("keypress", (e) => {
     if (Number.isInteger(+e.key)) {
         if (!operator) {
             firstOperand += e.key;
             answerBox.textContent = firstOperand;
         } else {
+            secondOperand += e.key;
+            answerBox.textContent = secondOperand;
+        }
+    } else if (e.key == ".") {
+        if (!operator && !answerBox.textContent.includes(".")) {
+            firstOperand += e.key;
+            answerBox.textContent = firstOperand;
+        } else if (!answerBox.textContent.includes(".")) {
             secondOperand += e.key;
             answerBox.textContent = secondOperand;
         }
@@ -113,16 +126,29 @@ body.addEventListener("keydown", (e) => {
 })
 
 numberButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        if (!operator) {
-            firstOperand += button.textContent;
-            answerBox.textContent = firstOperand;
-        } else {
-            secondOperand += button.textContent;
-            answerBox.textContent = secondOperand;
-        }
-    })
+    if (button.id == "last-second") {
+        button.addEventListener("click", () => {
+            if (!operator && !answerBox.textContent.includes(".")) {
+                firstOperand += button.textContent;
+                answerBox.textContent = firstOperand;
+            } else if (!answerBox.textContent.includes(".")) {
+                secondOperand += button.textContent;
+                answerBox.textContent = secondOperand;
+            }
+        })
+    } else {
+        button.addEventListener("click", () => {
+            if (!operator) {
+                firstOperand += button.textContent;
+                answerBox.textContent = firstOperand;
+            } else {
+                secondOperand += button.textContent;
+                answerBox.textContent = secondOperand;
+            }
+        })
+    }
 })
+
 operationButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (operator.length == 0) {
