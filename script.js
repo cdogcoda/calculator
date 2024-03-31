@@ -51,10 +51,66 @@ let secondOperand = "";
 let operator = "";
 let result;
 
+const body = document.querySelector("body");
 const answerBox = document.querySelector(".answer-box");
 answerBox.style.cssText = "font-size: 100px; text-align: right;"
 const numberButtons = document.querySelectorAll(".numbers-container button");
 const operationButtons = document.querySelectorAll(".operations-container button");
+body.addEventListener("keypress", (e) => {
+    if (Number.isInteger(+e.key)) {
+        if (!operator) {
+            firstOperand += e.key;
+            answerBox.textContent = firstOperand;
+        } else {
+            secondOperand += e.key;
+            answerBox.textContent = secondOperand;
+        }
+    } else if (e.key == "Enter") {
+        displayResult();
+    } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
+        if (operator.length == 0) {
+            firstOperand = answerBox.textContent;
+            let button = Array.from(operationButtons).find((button) => button.textContent == e.key);
+            if (answerBox.textContent != "") {
+                operator = e.key;
+                button.style.cssText = "background-color: red;";
+            }
+        } else {
+            displayResult();
+            firstOperand = answerBox.textContent;
+            operator = e.key;
+            button.style.cssText = "background-color: red;";
+        }
+    } else if (e.key == "C") {
+        answerBox.textContent = "";
+        firstOperand = "";
+        secondOperand = "";
+        operator = "";
+        operationButtons.forEach((button) => {
+            button.style.cssText = "";
+        })
+    }
+})
+
+body.addEventListener("keydown", (e) => {
+    if (e.key == "Backspace") {
+        let answerBoxContentList = answerBox.textContent.split("");
+        answerBoxContentList.pop();
+        answerBox.textContent = answerBoxContentList.join("");
+        if (operator && secondOperand == "") {
+            firstOperand = answerBox.textContent;
+            operator = "";
+            operationButtons.forEach((button) => {
+                button.style.cssText = "";
+            }) 
+        } else if (secondOperand == "") {
+            firstOperand = answerBox.textContent;
+        } else {
+            secondOperand = answerBox.textContent;
+        }
+    } 
+})
+
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (!operator) {
@@ -64,7 +120,6 @@ numberButtons.forEach((button) => {
             secondOperand += button.textContent;
             answerBox.textContent = secondOperand;
         }
-        
     })
 })
 operationButtons.forEach((button) => {
