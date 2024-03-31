@@ -84,6 +84,9 @@ equalsButton.addEventListener("click", () => {
 const clearButton = document.querySelector(".maintenance-container #clear");
 clearButton.addEventListener("click", () => {
     answerBox.textContent = "";
+    firstOperand = "";
+    secondOperand = "";
+    operator = "";
 })
 
 const deleteButton = document.querySelector(".maintenance-container #delete");
@@ -92,7 +95,7 @@ deleteButton.addEventListener("click", () => {
     answerBoxContentList.pop();
     answerBox.textContent = answerBoxContentList.join("");
     if (operator && secondOperand == "") {
-       firstOperand = answerBox.textContent;
+        firstOperand = answerBox.textContent;
         operator = "";
         operationButtons.forEach((button) => {
             button.style.cssText = "";
@@ -100,5 +103,4 @@ deleteButton.addEventListener("click", () => {
     } else {
         secondOperand = answerBox.textContent;
     }
-    
 })
