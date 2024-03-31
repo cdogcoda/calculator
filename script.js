@@ -28,6 +28,7 @@ function operate(operator, firstNum, secondNum) {
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
+let result;
 
 const answerBox = document.querySelector(".answer-box");
 answerBox.style.cssText = "font-size: 100px; text-align: right;"
@@ -59,8 +60,10 @@ operationButtons.forEach((button) => {
 
 const equalsButton = document.querySelector(".maintenance-container #equals");
 equalsButton.addEventListener("click", () => {
-    let result = operate(operator, +firstOperand, +secondOperand);
-    answerBox.textContent = result;
+    result = operate(operator, +firstOperand, +secondOperand);
+    if (result) {
+        answerBox.textContent = result;
+    }
     firstOperand = "";
     operator = "";
     secondOperand = "";
