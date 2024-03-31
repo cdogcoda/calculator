@@ -26,6 +26,9 @@ function operate(operator, firstNum, secondNum) {
 }
 
 let isNewCalculation = false;
+let firstOperand = "";
+let secondOperand = "";
+let operator = "";
 
 const answerBox = document.querySelector(".answer-box");
 answerBox.style.cssText = "font-size: 100px; text-align: right;"
@@ -37,13 +40,23 @@ numberButtons.forEach((button) => {
             isNewCalculation = false;
             answerBox.textContent = "";
         }
-        answerBox.textContent += button.textContent;
+        if (!operator) {
+            firstOperand += button.textContent;
+            answerBox.textContent = firstOperand;
+        } else {
+            secondOperand += button.textContent;
+            answerBox.textContent = secondOperand;
+        }
+        
     })
 })
 operationButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        if (answerBox.textContent != "" && isNewCalculation == false) {
-            answerBox.textContent += button.textContent;
+        if (operator.length == 0) {
+            if (answerBox.textContent != "" && isNewCalculation == false) {
+                operator = button.textContent;
+                button.style.cssText = "background-color: red;";
+            }
         }
     })
 })
