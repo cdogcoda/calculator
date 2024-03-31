@@ -18,6 +18,11 @@ let operationsObject = {
 
 
 function operate(operator, firstNum, secondNum) {
+    if (operator == "/" && secondNum == 0) {
+        return "Error";
+    } else if (isNaN(firstNum) || isNaN(secondNum)) {
+        return "Error";
+    }
     for (const operation in operationsObject) {
         if (operator == operation) {
             return Math.round(operationsObject[operation](firstNum, secondNum) * 1000) / 1000;
