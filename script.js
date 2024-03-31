@@ -100,6 +100,8 @@ deleteButton.addEventListener("click", () => {
         operationButtons.forEach((button) => {
             button.style.cssText = "";
         }) 
+    } else if (secondOperand == "") {
+        firstOperand = answerBox.textContent;
     } else {
         secondOperand = answerBox.textContent;
     }
