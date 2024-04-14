@@ -31,6 +31,7 @@ body {
 }
 
 .buttons-container {
+    width: 660px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -39,12 +40,12 @@ body {
 }
 
 .primary-container {
+    width: 100%;
     display: flex;
     gap: 20px;
 }
 
 .numbers-container {
-    width: 490px;
     gap: 20px;
     display: flex;
     flex-flow: row wrap;
@@ -55,7 +56,6 @@ body {
 }
 
 .operations-container {
-    /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -63,7 +63,7 @@ body {
 }
 
 .maintenance-container {
-    width: 660px;
+    width: 100%;
     display: flex;
     gap: 20px;
 }
